@@ -1,0 +1,26 @@
+name: Build Atlas Executor
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Compile Atlas
+        run: |
+          clang++ -dynamiclib -std=c++17 -framework Foundation -framework UIKit -framework Metal -framework QuartzCore \
+          Atlas.mm imgui/*.cpp \
+          -I./ -I./imgui \
+          -o AtlasExecutor.dylib
+
+      - name: Upload Result
+        uses: actions/upload-artifact@v3
+        with:
+          name: Atlas-Executor-Build
+          path: AtlasExecutor.dylib
