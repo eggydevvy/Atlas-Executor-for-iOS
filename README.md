@@ -5,3 +5,5 @@ The Vault: A massive, curated Script Hub with 1-click execution.
 Neural Engine: Ask our AI to generate, fix, or optimize scripts in real-time.
 
 Undetected Core: Built for stability, speed, and discretion.
+
+Download all files and inject them as a dylib to feather.
